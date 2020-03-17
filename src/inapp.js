@@ -13,6 +13,7 @@ const BROWSER = {
   safari: /Version.*Mobile.*Safari|Safari.*Mobile|MobileSafari/,
   ie: /IEMobile|MSIEMobile/,
   firefox: /fennec|firefox.*maemo|(Mobile|Tablet).*Firefox|Firefox.*Mobile|FxiOS/,
+  gsa: /(?:GSA)\/([0-9]+)\./i,
 };
 
 class InApp {
@@ -40,8 +41,10 @@ class InApp {
       'WebView',
       '(iPhone|iPod|iPad)(?!.*Safari\/)',
       'Android.*(wv|\.0\.0\.0)',
+      '(?:GSA)\/([0-9]+)\.',
     ];
     const regex = new RegExp(`(${rules.join('|')})`, 'ig');
+    console.log('matching!!');
     return Boolean(this.ua.match(regex));
   }
 }
